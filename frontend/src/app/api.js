@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ACCESS_TOKEN } from "./utils/constants";
+import { ACCESS_TOKEN } from "./_utils/constants";
 
 const apiUrl = "/choreo-apis/awbo/backend/rest-api-be2/v1.0";
 

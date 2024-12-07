@@ -1,5 +1,5 @@
 import HomePage from "./home/page";
-import ProtectedRoute from "./utils/ProtectedRoute";
+import ProtectedRoute from "./_utils/ProtectedRoute";
 
 export default function Home() {
   return (
