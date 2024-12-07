@@ -1,16 +1,21 @@
 "use client";
 import { jwtDecode } from "jwt-decode";
-import api from "../../../api";
+import api from "../api";
 import { REFRESH_TOKEN, ACCESS_TOKEN } from "./constants";
-import { useState, useEffect } from "react";
+import { useState, useEffect, ReactNode } from "react";
 import Link from "next/link";
 
-function ProtectedRoute({ herf }) {
-  const [isAuthorized, setIsAuthorized] = useState(null);
+interface ProtectedRouteProps {
+  href: string;
+  children: ReactNode;
+}
+
+function ProtectedRoute({ href, children }: ProtectedRouteProps) {
+  const [isAuthorized, setIsAuthorized] = useState<boolean | null>(null);
 
   useEffect(() => {
     auth().catch(() => setIsAuthorized(false));
-  });
+  }, []);
 
   const refreshToken = async () => {
     const refreshToken = localStorage.getItem(REFRESH_TOKEN);
@@ -36,7 +41,7 @@ function ProtectedRoute({ herf }) {
       setIsAuthorized(false);
       return;
     }
-    const decoded = jwtDecode(token);
+    const decoded = jwtDecode<{ exp: number }>(token); // Type the decoded token
     const tokenExpiration = decoded.exp;
     const now = Date.now() / 1000;
 
@@ -51,7 +56,11 @@ function ProtectedRoute({ herf }) {
     return <div>Loading...</div>;
   }
 
-  return isAuthorized ? <Link href={herf}/> : <Link to="/login" />;
+  return isAuthorized ? (
+    <Link href={href}>{children}</Link>
+  ) : (
+    <Link href="/login">Login</Link>
+  );
 }
 
 export default ProtectedRoute;

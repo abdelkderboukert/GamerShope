@@ -4,9 +4,8 @@ import ProtectedRoute from "./utils/ProtectedRoute";
 export default function Home() {
   return (
     <>
-      <HomePage/>
-      <ProtectedRoute herf="/shope"></ProtectedRoute>
+      <HomePage />
+      <ProtectedRoute href="/shope">shope</ProtectedRoute>
     </>
-    
   );
 }
