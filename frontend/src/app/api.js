@@ -4,7 +4,9 @@ import { ACCESS_TOKEN } from "./_utils/constants";
 const apiUrl = "/choreo-apis/awbo/backend/rest-api-be2/v1.0";
 
 const api = axios.create({
-  baseURL: process.env.VITE_API_URL ? process.env.VITE_API_URL : apiUrl,
+  baseURL: process.env.NEXT_PUBLIC_API_URL
+    ? process.env.NEXT_PUBLIC_API_URL
+    : apiUrl,
 });
 
 api.interceptors.request.use(
