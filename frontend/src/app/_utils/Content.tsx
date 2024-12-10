@@ -4,6 +4,7 @@ import { ACCESS_TOKEN, REFRESH_TOKEN } from "./constants";
 import api from "../api";
 import { IonIcon } from "@ionic/react";
 import { closeOutline } from "ionicons/icons";
+import axios from "axios";
 // import { login, logout } from "./auth";
 
 export default function Contentt() {
@@ -12,25 +13,35 @@ export default function Contentt() {
   const [buttonClicked, setButtonClicked] = useState<boolean | null>(null);
 
   const logout = async () => {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/logout/`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Token ${localStorage.getItem("REFRESH_TOKEN")}`,
-        },
-      }
-    );
+    const refreshToken = localStorage.getItem(REFRESH_TOKEN); // Assuming you store the refresh token in local storage
 
-    if (response.ok) {
-      localStorage.removeItem("REFRESH_TOKEN");
-      localStorage.removeItem("ACCESS_TOKEN");
-      setLogIn(false);
-      // Redirect to login or home page
-    } else {
-      // Handle error
-      console.error("Logout failed");
+    if (!refreshToken) {
+      console.error("No refresh token found");
+      return;
+    }
+
+    try {
+      const response = await axios.post(
+        "http://localhost:8000/api/token/blacklist/",
+        {
+          refresh: refreshToken,
+        }
+      );
+
+      if (response.status === 200) {
+        // Successfully logged out
+        localStorage.removeItem(REFRESH_TOKEN);
+        localStorage.removeItem(ACCESS_TOKEN); // Remove the refresh token from local storage
+        // Optionally redirect the user or update the UI
+        setLogIn(false);
+        console.log("Logged out successfully");
+      }
+    } catch (error) {
+      console.error(
+        "Logout failed:",
+        //@ts-expect-error about the error
+        error.response ? error.response.data : error.message
+      );
     }
   };
 

@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <>
       <HomePage />
-      <ProtectedRoute href="/shope">shope</ProtectedRoute>
+      {/* <ProtectedRoute href="/home">home</ProtectedRoute> */}
     </>
   );
 }

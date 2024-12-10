@@ -1,7 +1,11 @@
-import React from 'react'
+import React from "react";
+import Header from "../_utils/header";
 
 export default function HomePage() {
   return (
-    <div>page</div>
-  )
+    <>
+      <Header />
+      <section className="h-dvh w-dvw bg-red-400"></section>
+    </>
+  );
 }

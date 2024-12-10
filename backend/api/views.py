@@ -9,6 +9,7 @@ from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
 from rest_framework import status
+from django.contrib.auth import logout
 
 
 class NoteListCreate(generics.ListCreateAPIView):
@@ -40,11 +41,9 @@ class CreateUserView(generics.CreateAPIView):
     serializer_class = UserSerializer
     permission_classes = [AllowAny]
 
-    
-class LogoutView(ObtainAuthToken):
+class LogoutView(APIView):
+    permission_classes = [IsAuthenticated]
+
     def post(self, request):
-        try:
-            request.user.auth_token.delete()
-            return Response(status=status.HTTP_200_OK)
-        except (AttributeError, Token.DoesNotExist):
-            return Response(status=status.HTTP_400_BAD_REQUEST)
+        logout(request)
+        return Response({"detail": "Successfully logged out."}, status=200)
