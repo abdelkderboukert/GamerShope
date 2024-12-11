@@ -1,11 +1,13 @@
 import HomePage from "./home/page";
-import ProtectedRoute from "./_utils/ProtectedRoute";
+import Header from "./_utils/header";
+import Fonted from "./_utils/fonted";
 
 export default function Home() {
   return (
     <>
+      <Header/>
       <HomePage />
-      {/* <ProtectedRoute href="/home">home</ProtectedRoute> */}
+      <Fonted/>
     </>
   );
 }
