@@ -20,9 +20,9 @@ export default function Header() {
   return (
     <div className="bg-white flex w-screen h-11 md:h-14 items-center justify-between px-4 sm:px-7 lg:px-12 shadow-lg ">
       <div className="h-full w-48 flex justify-center items-center flex-row">
-        <div className="h-12 w-12 bg-logo"></div>
+        <div className="h-12 w-20 bg-logo"></div>
         <span className="text-[#0e012d] font-semibold text-xl protest-strike-regular">
-          Restate
+          &nbsp;Shope
         </span>
       </div>
       <div className="h-full w-full items-center justify-center flex flex-row">

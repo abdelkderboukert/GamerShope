@@ -18,8 +18,102 @@
   }
 }
 
+@font-face {
+  font-family: Protest Strike ;
+  src: url(../../public/fonts/ProtestStrike-Regular.ttf);
+}
+
+@font-face {
+  font-family: GB Shinto ;
+  src: url(../../public/fonts/GbshintoRegular-VMGx.otf);
+}
+
+.protest-strike-regular {
+  font-family: "Protest Strike", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.gb-shinto {
+  font-family: "GB Shinto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
 body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+ .bg-p1 {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+  background-image:  url("../../public/images/pg6.jpg"); 
+}
+
+.bg-p2 {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+  background-image: url("../../public/images/pg2.jpg"); 
+}
+
+.bg-p3 {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+  background-image: url("../../public/images/pg5.jpg"); 
+}
+
+.bg-p4 {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+  background-image:  url("../../public/images/pg1.jpg"); 
+}
+
+.bg-p5 {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+  background-image: url("../../public/images/pg3.jpg"); 
+}
+/*
+.bg-p6 {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+  background-image: url("../../public/images/google.png"); 
+} */
+.bg-logo {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+  background-image:  /*linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 75%, #000 100%) ,*/ url("../../public/images/ZTT_Red-White1.png"); 
+  /* background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 75%, #000 100%); */
+}
+
+.line {
+  transform: scaleY(1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.shadow-custom {
+  box-shadow: -5px -5px white; /* Adjust values as needed */
 }
